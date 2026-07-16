@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+  
+  *:focus {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+  
+  *:focus:not(:focus-visible) {
+    @apply ring-0 ring-offset-0;
+  }
+  
+  *:focus-visible {
+    @apply ring-2 ring-primary-500 ring-offset-2;
+  }
+}
+
+@layer components {
+  .form-step {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .error-message {
+    @apply text-error-600 text-sm mt-1 flex items-center;
+  }
+  
+  .error-message::before {
+    content: "⚠";
+    @apply mr-1;
+  }
+  
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-2 rounded-md hover:bg-primary-700 
+           focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 
+           disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-gray-700 px-6 py-2 rounded-md border border-gray-300 
+           hover:bg-gray-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 
+           disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md 
+           focus:border-primary-500 focus:ring-1 focus:ring-primary-500 
+           disabled:bg-gray-100 disabled:cursor-not-allowed;
+  }
+
+  .input-field[aria-invalid="true"] {
+    @apply border-error-500 ring-error-500;
+  }
+  
+  .label-text {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.2s ease-in-out;
+  }
+}
